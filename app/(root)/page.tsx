@@ -23,7 +23,7 @@ async function Home({
     30
   );
 
-  return (
+    return (
     <>
       <h1 className='head-text text-left'>Home</h1>
 
@@ -49,12 +49,6 @@ async function Home({
           </>
         )}
       </section>
-{/* 
-      <Pagination
-        path='/'
-        pageNumber={searchParams?.page ? +searchParams.page : 1}
-        isNext={result.isNext}
-      /> */}
     </>
   );
 }

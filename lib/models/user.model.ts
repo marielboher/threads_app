@@ -23,20 +23,20 @@ const userSchema = new mongoose.Schema({
     },
   ],
   onboarded: {
-    type:Boolean,
+    type: Boolean,
     default: false,
   },
   communities: [
-   {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Community",
-   }   
-  ]
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Community",
+    },
+  ],
 });
 
 if (!mongoose.models.User) {
-  mongoose.model('User', userSchema);
+  mongoose.model("User", userSchema);
 }
 const User = mongoose.models.User;
 
-export default User
+export default User;

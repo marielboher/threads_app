@@ -40,9 +40,10 @@ const ThreadCard = ({
   isComment,
   isLiked
 }: Props) => {
-const isLikeado = isLiked.length > 0 ? true : false;
+  const isLikeado = isLiked?.length > 0 ? true : false;
+
   if (!author || !author.id || !author.image || !author.name) {
-    return null; 
+    return null;
   }
   return (
     <article
@@ -76,7 +77,9 @@ const isLikeado = isLiked.length > 0 ? true : false;
 
             <div className={`${isComment && "mb-10"} mt-5 flex flex-col gap-3`}>
               <div className="flex gap-3.5">
-              <LikeButton liked={isLikeado} threadId={id} currentUserId={currentUserId} />
+                <LikeButton
+                  liked={isLikeado}
+                />
                 <Link href={`/thread/${id}`}>
                   <Image
                     src="/assets/reply.svg"
@@ -111,14 +114,13 @@ const isLikeado = isLiked.length > 0 ? true : false;
             </div>
           </div>
         </div>
-
       </div>
-        {!isComment && community && (
+      {!isComment && community && (
         <Link
           href={`/communities/${community.id}`}
-          className='mt-5 flex items-center'
+          className="mt-5 flex items-center"
         >
-          <p className='text-subtle-medium text-gray-1'>
+          <p className="text-subtle-medium text-gray-1">
             {formatDateString(createdAt)}
             {community && ` - ${community.name} Community`}
           </p>
@@ -128,7 +130,7 @@ const isLikeado = isLiked.length > 0 ? true : false;
             alt={community.name}
             width={14}
             height={14}
-            className='ml-1 rounded-full object-cover'
+            className="ml-1 rounded-full object-cover"
           />
         </Link>
       )}
