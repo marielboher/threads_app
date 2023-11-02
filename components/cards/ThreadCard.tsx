@@ -38,7 +38,7 @@ const ThreadCard = ({
   createdAt,
   comments,
   isComment,
-  isLiked
+  isLiked,
 }: Props) => {
   const isLikeado = isLiked?.length > 0 ? true : false;
 
@@ -47,8 +47,8 @@ const ThreadCard = ({
   }
   return (
     <article
-      className={`flex w-full flex-col rounded-xl ${
-        isComment ? "px-0 xs:px-7" : "bg-dark-2 p-7"
+      className={`flex w-full max-w-full flex-col rounded-xl ${
+        isComment ? "p-0 xs:p-4 sm:p-7" : "bg-dark-2 p-4 sm:p-7"
       }`}
     >
       <div className="flex items-start justify-between">
@@ -58,7 +58,8 @@ const ThreadCard = ({
               <Image
                 src={author.image}
                 alt="user_community_image"
-                fill
+                layout="fill" 
+                objectFit="cover"
                 className="cursor-pointer rounded-full"
               />
             </Link>
@@ -77,9 +78,7 @@ const ThreadCard = ({
 
             <div className={`${isComment && "mb-10"} mt-5 flex flex-col gap-3`}>
               <div className="flex gap-3.5">
-                <LikeButton
-                  liked={isLikeado}
-                />
+                <LikeButton liked={isLikeado} threadId={id} currentUserId={currentUserId} />
                 <Link href={`/thread/${id}`}>
                   <Image
                     src="/assets/reply.svg"
